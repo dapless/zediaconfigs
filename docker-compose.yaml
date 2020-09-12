@@ -1,0 +1,18 @@
+---
+version: "2"
+services:
+  emby:
+    image: linuxserver/emby
+    container_name: emby
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022 #optional
+    volumes:
+      - /mnt/apps/emby/config:/config
+      - /mnt/backup/desktop/e621/:/data/e621
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+    restart: unless-stopped
